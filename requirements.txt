@@ -1,15 +1,28 @@
-streamlit==1.45.1
-numpy==2.2.6
-pandas==2.2.3
-matplotlib==3.10.3
+# ───────────────────────────────────────────────────────────
+# Streamlit + basic plotting/data libs
+streamlit>=1.23.1
+numpy==2.1.4
+pandas>=2.0.0
+matplotlib>=3.10.3
+
+# SciPy with a Linux wheel for Python 3.13 (no Fortran build)
 scipy==1.15.3
+
+# PyTorch CPU wheel (Python 3.13)
 torch==2.7.1
+
+# GluonTS (requires numpy<2.2)
 gluonts==0.16.1
-huggingface_hub==0.32.4
+
+# Hugging Face Hub
+huggingface_hub>=0.18.0
+
+# uni2ts (MoiraiForecast, etc.)
+uni2ts>=0.1.0
+
+# Chronos pipeline
+chronos>=0.1.0
+
+# Statsmodels with a Python 3.13 wheel
 statsmodels==0.15.2
-uni2ts==1.2.0
-chronos-forecasting==1.5.2
-scikit-learn==1.4.0
-scikit-optimize==0.9.0
-scikit-multiflow==0.7.1
-scikit-learn-extra==0.3.0
+# ───────────────────────────────────────────────────────────
