@@ -6,7 +6,7 @@ scipy==1.15.3
 torch==2.7.1
 gluonts==0.16.1
 huggingface_hub==0.32.4
-statsmodels==0.14.0
+statsmodels==0.15.2
 uni2ts==1.2.0
 chronos-forecasting==1.5.2
 scikit-learn==1.4.0
