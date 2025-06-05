@@ -1,9 +1,9 @@
 # ───────────────────────────────────────────────────────────
 # Streamlit + basic plotting/data libs
 streamlit==1.45.1
-numpy==1.26.4
-pandas==2.1.4
-matplotlib==3.10.0
+# numpy==1.26.4
+# pandas==2.1.4
+# matplotlib==3.10.0
 
 # SciPy with a Linux wheel for Python 3.11
 scipy==1.11.4
@@ -13,7 +13,7 @@ scipy==1.11.4
 # The previous uni2ts error indicated torch>=2.1,<2.5.
 # This might still be a point of conflict with uni2ts.
 # Let's keep it at 2.7.0 as per your local, but be aware.
-torch==2.7.0
+# torch==2.7.0
 
 # GluonTS
 
