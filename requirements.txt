@@ -1,7 +1,7 @@
 # ───────────────────────────────────────────────────────────
 # Streamlit + basic plotting/data libs
 streamlit==1.45.1
-numpy==1.26.4
+numpy==1.16.0
 pandas==2.1.4
 matplotlib==3.10.0
 
