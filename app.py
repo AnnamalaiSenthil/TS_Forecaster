@@ -9,13 +9,13 @@ import os
 
 # 1. Page config + title
 st.set_page_config(page_title="Time‑Series CLI Runner", layout="wide")
-st.title("📁 Upload a CSV and Run moirai.py or Kronos.py")
+st.title("📁 Time series Forecaster")
 
 st.markdown(
     """
     1. Upload a CSV file containing your time‑series.  
-    2. Choose which script to run (moirai.py or Kronos.py).  
-    3. The selected script will be invoked as if you ran `python <script> <uploaded.csv>`.  
+    2. Choose which model to run (moirai.py or chronos.py).  
+    3. The selected model will be invoked as if you ran `python <script> <uploaded.csv>`.  
     4. We capture stdout/stderr and display it below.
     """
 )
@@ -29,7 +29,7 @@ uploaded_file = st.file_uploader(
 # 3. Dropdown to pick which CLI script to run
 script_choice = st.selectbox(
     "Step 2: Select which script to run on the uploaded CSV",
-    ("moirai.py", "Kronos.py")
+    ("moirai.py", "chronos_model.py")
 )
 
 # 4. A “Run” button

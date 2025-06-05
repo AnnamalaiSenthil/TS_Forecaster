@@ -1,7 +1,7 @@
 # ───────────────────────────────────────────────────────────
 # Streamlit + basic plotting/data libs
 streamlit==1.45.1
-numpy==1.16.0
+numpy==1.26.4
 pandas==2.1.4
 matplotlib==3.10.0
 
@@ -16,7 +16,6 @@ scipy==1.11.4
 torch==2.7.0
 
 # GluonTS
-gluonts==0.16.0
 
 # Hugging Face Hub
 huggingface_hub==0.27.0 # Pinned to your local version
