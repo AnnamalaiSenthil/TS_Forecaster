@@ -1,28 +1,31 @@
 # ───────────────────────────────────────────────────────────
 # Streamlit + basic plotting/data libs
-streamlit>=1.23.1
+streamlit==1.45.1
 numpy==1.26.4
-pandas>=2.0.0
-matplotlib>=3.10.3
+pandas==2.1.4
+matplotlib==3.10.0
 
-# SciPy with a Linux wheel for Python 3.13 (no Fortran build)
-scipy==1.15.3
+# SciPy with a Linux wheel for Python 3.11
+scipy==1.11.4
 
-# PyTorch CPU wheel (Python 3.13)
-torch==2.7.1
+# PyTorch CPU wheel (Python 3.11 compatible version)
+# NOTE: Your local has torch==2.7.0.
+# The previous uni2ts error indicated torch>=2.1,<2.5.
+# This might still be a point of conflict with uni2ts.
+# Let's keep it at 2.7.0 as per your local, but be aware.
+torch==2.7.0
 
-# GluonTS (requires numpy<2.2)
+# GluonTS
 gluonts==0.16.0
 
 # Hugging Face Hub
-huggingface_hub>=0.18.0
+huggingface_hub==0.27.0 # Pinned to your local version
 
 # uni2ts (MoiraiForecast, etc.)
-uni2ts>=1.2.0
+uni2ts==1.2.0
 
 # Chronos pipeline
-chronos>=0.1.0
+chronos-forecasting==1.4.1 # Pinned to your local version
 
-# Statsmodels with a Python 3.13 wheel
+# Statsmodels with a Python 3.11 wheel
 statsmodels==0.14.4
-# ───────────────────────────────────────────────────────────
