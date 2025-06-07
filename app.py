@@ -36,8 +36,8 @@ uploaded_file = st.file_uploader(
 
 # 3. Dropdown to pick which CLI script to run
 script_choice = st.selectbox(
-    "Step 2: Select which script to run on the uploaded CSV",
-    ("moirai.py", "chronos_model.py")
+    "Step 2: Select which model to run on the uploaded CSV",
+    ("MOIRAI-MOE", "CHRONOS")
 )
 
 # 4. A “Run” button
