@@ -58,7 +58,7 @@ if uploaded_file is not None and run_button:
         #    e.g. `python moirai.py /path/to/tmp.csv`
         python_executable = sys.executable  # ensures we call the same Python interpreter
         model = ModelChooser(script_choice)
-        script_path = os.path.join(os.getcwd(), script_choice)
+        script_path = os.path.join(os.getcwd(), model)
         cmd = [python_executable, script_path, tmp_path]
 
         st.text(f"Running command:\n```\n{cmd}\n```")
