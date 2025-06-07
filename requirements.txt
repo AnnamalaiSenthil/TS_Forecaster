@@ -4,7 +4,7 @@ streamlit==1.45.1
 # numpy==1.26.4
 # pandas==2.1.4
 matplotlib==3.10.0
-sklearn==1.4.2
+scikit-learn==1.4.0
 
 # SciPy with a Linux wheel for Python 3.11
 scipy==1.11.4
