@@ -122,7 +122,6 @@ for forecast in forecast_it:
     for timestamp, pred_value in zip(timestamps, forecast.mean):
         prediction_results.append({"time": timestamp, "predicted_value": pred_value})
 
-print("Reached here")
 # Convert predictions to a DataFrame
 pred_df = pd.DataFrame(prediction_results)
 
@@ -139,7 +138,6 @@ merged_df.sort_values(by="time", inplace=True)
 # Save the merged DataFrame to a CSV file
 merged_df.to_csv("predicted_data.csv", index=False)
 
-print("Predicted data has been saved to 'predicted_data.csv'.")
 
 import pandas as pd
 import numpy as np

@@ -2,6 +2,37 @@ import pandas as pd
 import torch
 from chronos import BaseChronosPipeline
 import sys
+import numpy as np
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+
+def analyze_errors(actual, pred):
+    # Ensure numpy arrays
+    actual = np.array(actual)
+    pred = np.array(pred)
+    
+    rmse = np.sqrt(mean_squared_error(actual, pred))
+    mae = mean_absolute_error(actual, pred)
+    r2 = r2_score(actual, pred)
+    smape = 100 * np.mean(np.abs(pred - actual) / ((np.abs(actual) + np.abs(pred)) / 2))
+    mape = 100 * np.mean(np.abs((actual - pred) / actual))
+    mean_error = np.mean(pred - actual)
+    std_error = np.std(pred - actual)
+    under_predictions = np.sum(pred < actual)
+    over_predictions = np.sum(pred > actual)
+    
+    results = {
+        'RMSE': rmse,
+        'MAE': mae,
+        'R-squared': r2,
+        'SMAPE': smape,
+        'MAPE': mape,
+        'Mean Error': mean_error,
+        'Std Error': std_error,
+        'Under Predictions': under_predictions,
+        'Over Predictions': over_predictions
+    }
+    return results
 
 # Load local CSV file
 
@@ -41,12 +72,13 @@ quantiles, mean = pipeline.predict_quantiles(
 )
 
 actual_values = df["value"].iloc[-PDT:].values
+# actual_values = actual_values.numpy()
 
 last_timestamp = df.index[-1]
 forecast_timestamps = pd.date_range(start=last_timestamp + pd.Timedelta(hours=1), periods=PDT, freq="H")
 
 # Print forecast timestamps
-print(forecast_timestamps)
+# print(forecast_timestamps)
 
 # Create a DataFrame to store predictions
 forecast_df = pd.DataFrame({
@@ -65,30 +97,11 @@ import numpy as np
 # - pred_median: a torch tensor containing the median predictions
 
 # Convert the median predictions to a numpy array if needed:
-median_predictions = quantiles.numpy()
+median_predictions = quantiles[0,:,1].numpy()
 
-# Calculate Mean Squared Error (MSE)
-mse = mean_squared_error(actual_values, quantiles[0, :, 1])
+# -------------------------------------------------
 
-# Calculate Root Mean Squared Error (RMSE)
-rmse = np.sqrt(mse)
+results = analyze_errors(actual_values, median_predictions)
 
-# Calculate R² (coefficient of determination)
-r2 = r2_score(actual_values, quantiles[0, :, 1])
-
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("R^2:", r2)
-
-# Assuming you already have:
-# - actual_values: a 1D NumPy array of shape (PDT,)
-# - median_predictions: a 1D NumPy array of shape (PDT,)
-
-# Count under and over predictions
-under_predictions = np.sum(quantiles[0, :, 1].numpy() < actual_values)
-over_predictions = np.sum(quantiles[0, :, 1].numpy() > actual_values)
-equal_predictions = np.sum(quantiles[0, :, 1].numpy() == actual_values)  # optional
-
-print(f"Under-predictions: {under_predictions}")
-print(f"Over-predictions: {over_predictions}")
-print(f"Exact matches   : {equal_predictions}")
+for metric, value in results.items():
+    print(f"{metric}: {value:.4f}" if isinstance(value, float) else f"{metric}: {value}")

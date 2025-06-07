@@ -7,16 +7,24 @@ import sys
 import tempfile
 import os
 
+def ModelChooser(script_name):
+    """
+    Chooses the model based on the script name.
+    """
+    if script_name == "MOIRAI-MOE":
+        return "moirai.py"
+    elif script_name == "CHRONOS":
+        return "chronos_model.py"
+    else:
+        raise ValueError(f"Unknown script: {script_name}")
+
 # 1. Page config + title
 st.set_page_config(page_title="Time‑Series CLI Runner", layout="wide")
 st.title("📁 Time series Forecaster")
 
 st.markdown(
     """
-    1. Upload a CSV file containing your time‑series.  
-    2. Choose which model to run (moirai.py or chronos.py).  
-    3. The selected model will be invoked as if you ran `python <script> <uploaded.csv>`.  
-    4. We capture stdout/stderr and display it below.
+    This is a library that allows you to run any time series forecasting model on a custom csv file.
     """
 )
 
@@ -49,6 +57,7 @@ if uploaded_file is not None and run_button:
         # 5.2. Build the command that we’d run on the command line
         #    e.g. `python moirai.py /path/to/tmp.csv`
         python_executable = sys.executable  # ensures we call the same Python interpreter
+        model = ModelChooser(script_choice)
         script_path = os.path.join(os.getcwd(), script_choice)
         cmd = [python_executable, script_path, tmp_path]
 
