@@ -6,6 +6,22 @@ import subprocess
 import sys
 import tempfile
 import os
+import pathlib
+
+def display_tree(start_path, max_depth=3, prefix=""):
+    """Recursively prints a tree structure up to max_depth."""
+    tree_str = ""
+    start_path = pathlib.Path(start_path)
+    if max_depth < 0:
+        return ""
+    for path in sorted(start_path.iterdir()):
+        connector = "└── " if path == list(start_path.iterdir())[-1] else "├── "
+        tree_str += prefix + connector + path.name + ("\n" if path.is_file() else "/\n")
+        if path.is_dir():
+            extension = "    " if path == list(start_path.iterdir())[-1] else "│   "
+            tree_str += display_tree(path, max_depth-1, prefix + extension)
+    return tree_str
+
 
 def ModelChooser(script_name):
     """
@@ -44,6 +60,11 @@ script_choice = st.selectbox(
 
 # 4. A “Run” button
 run_button = st.button("🚀 Run Selected Script")
+
+if st.button("Show Project Tree"):
+    basedir = os.path.dirname(__file__)
+    tree = display_tree(basedir, max_depth=3)
+    st.code(tree)
 
 # 5. Only proceed if a file is uploaded and Run is clicked
 if uploaded_file is not None and run_button:
