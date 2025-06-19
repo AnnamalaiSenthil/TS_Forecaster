@@ -7,7 +7,7 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 # 2) Build the path to your nested repo code
 #    (adjust if you only have one level of `toto/`, or two levels)
-NESTED = os.path.join(HERE, "toto", "toto")
+NESTED = os.path.join(HERE, "toto")
 
 # 3) Prepend it to sys.path so your imports resolve there
 if os.path.isdir(NESTED):
