@@ -1,6 +1,48 @@
 # app.py
 
 import streamlit as st
+import sys, os, traceback
+
+try:
+    # ──────────────────────────────────────────────────────────────────────────
+    # START OF YOUR ORIGINAL app.py
+    # ──────────────────────────────────────────────────────────────────────────
+
+    import os
+    import sys
+    import pandas as pd
+    import subprocess
+    # … all your existing code …
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # END OF YOUR ORIGINAL app.py
+    # ──────────────────────────────────────────────────────────────────────────
+
+except Exception as e:
+    # Show the error in the Streamlit UI
+    st.set_page_config(page_title="Startup Error", layout="wide")
+    st.error("🚨 **Startup Exception in app.py**")
+    st.exception(e)
+    st.text("".join(traceback.format_exception(*sys.exc_info())))
+
+    # Dump the on‑disk layout so we can see what really exists
+    base = os.path.dirname(__file__)
+    st.subheader("📂 Files at root of app:")
+    st.write(os.listdir(base))
+
+    # If you’re invoking `toto/toto_model.py`, list that folder too
+    toto_path = os.path.join(base, "toto")
+    if os.path.isdir(toto_path):
+        st.subheader("📂 Contents of `toto/`:")
+        st.write(os.listdir(toto_path))
+    else:
+        st.subheader("⚠️ No `toto/` directory found at all!")
+
+    # Stop further execution
+    sys.exit(1)
+
+
+import streamlit as st
 import pandas as pd
 import subprocess
 import sys
