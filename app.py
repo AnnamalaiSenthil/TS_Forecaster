@@ -15,6 +15,8 @@ def ModelChooser(script_name):
         return "moirai.py"
     elif script_name == "CHRONOS":
         return "chronos_model.py"
+    elif script_name == "TOTO Base 1.0":
+        return "./toto/toto/toto_model.py"
     else:
         raise ValueError(f"Unknown script: {script_name}")
 
@@ -37,7 +39,7 @@ uploaded_file = st.file_uploader(
 # 3. Dropdown to pick which CLI script to run
 script_choice = st.selectbox(
     "Step 2: Select which model to run on the uploaded CSV",
-    ("MOIRAI-MOE", "CHRONOS")
+    ("MOIRAI-MOE", "CHRONOS", "TOTO Base 1.0"),
 )
 
 # 4. A “Run” button
