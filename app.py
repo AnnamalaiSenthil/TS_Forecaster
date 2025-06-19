@@ -19,7 +19,7 @@ def ModelChooser(script_name):
     elif script_name == "CHRONOS":
         return "chronos_model.py"
     elif script_name == "TOTO Base 1.0":
-        return "toto_model.py"
+        return "toto/toto_model.py"
     else:
         raise ValueError(f"Unknown script: {script_name}")
 
