@@ -2,18 +2,7 @@
 
 import os, sys
 
-# 1) Where this script lives
-HERE = os.path.abspath(os.path.dirname(__file__))
 
-# 2) Build the path to your nested repo code
-#    (adjust if you only have one level of `toto/`, or two levels)
-NESTED = os.path.join(HERE, "toto")
-
-# 3) Prepend it to sys.path so your imports resolve there
-if os.path.isdir(NESTED):
-    sys.path.insert(0, NESTED)
-else:
-    raise RuntimeError(f"Expected code under {NESTED}, but didn't find it")
 
 
 import matplotlib
