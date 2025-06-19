@@ -1,35 +1,11 @@
-# ───────────────────────────────────────────────────────────
-# Streamlit + basic plotting/data libs
 streamlit==1.45.1
-# numpy==1.26.4
-# pandas==2.1.4
 matplotlib==3.10.0
-scikit-learn==1.4.0
-
-# SciPy with a Linux wheel for Python 3.11
+scikit-learn==1.5.0
 scipy==1.11.4
-
-# PyTorch CPU wheel (Python 3.11 compatible version)
-# NOTE: Your local has torch==2.7.0.
-# The previous uni2ts error indicated torch>=2.1,<2.5.
-# This might still be a point of conflict with uni2ts.
-# Let's keep it at 2.7.0 as per your local, but be aware.
-# torch==2.7.0
-
-# GluonTS
-
-# Hugging Face Hub
-huggingface_hub==0.27.0 # Pinned to your local version
-
-# uni2ts (MoiraiForecast, etc.)
+huggingface_hub==0.27.0
 uni2ts==1.2.0
-
-# Chronos pipeline
-chronos-forecasting==1.4.1 # Pinned to your local version
-
-# Statsmodels with a Python 3.11 wheel
+chronos-forecasting==1.4.1
 statsmodels==0.14.4
-
 torch==2.7.0
 aioboto3==12.4.0
 beartype==0.18.5
@@ -44,17 +20,12 @@ pandas==2.2.3
 pytest==8.3.5
 pytest-env==1.1.5
 rotary-embedding-torch==0.8.6
-scikit-learn==1.5.0
 types-tabulate==0.9.0.20241207
 transformers==4.50.0
 tqdm==4.66.3
-beartype==0.18.5
-mypy==1.11.1
 pyyaml==6.0.2
 types-PyYAML==6.0.12.20240917
 black==24.10.0
 isort==5.13.2
-PyYAML==6.0.2
 jupyter==1.1.1
-matplotlib==3.9.2
 tabulate==0.9.0
